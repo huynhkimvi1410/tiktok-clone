@@ -5,9 +5,10 @@ import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -51,7 +52,20 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('action')}></div>
+                <div className={cx('action')}>
+                    <Button text>Upload</Button>
+                    <Button
+                        rightIcon={<FontAwesomeIcon icon={faSignIn} />}
+                        primary
+                        rounded
+                        onClick={() => alert('abc')}
+                    >
+                        Login
+                    </Button>
+                    <Button rounded style={{ position: 'absolute', right: '20px', bottom: '20px' }}>
+                        Get app
+                    </Button>
+                </div>
             </div>
         </header>
     );
