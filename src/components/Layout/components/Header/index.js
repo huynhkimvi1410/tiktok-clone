@@ -22,10 +22,23 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Menu from '~/components/Popper/Menu';
 const cx = classNames.bind(styles);
 
-const menuItems = [
+const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Langauge',
+            data: [
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -85,7 +98,7 @@ function Header() {
                     >
                         Login
                     </Button>
-                    <Menu items={menuItems}>
+                    <Menu items={MENU_ITEMS}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
                         </button>
