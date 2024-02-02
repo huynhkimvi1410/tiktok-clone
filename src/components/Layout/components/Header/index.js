@@ -5,20 +5,43 @@ import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+import {
+    faCircleQuestion,
+    faCircleXmark,
+    faEarthAsia,
+    faEllipsisVertical,
+    faKeyboard,
+    faMagnifyingGlass,
+    faSignIn,
+    faSpinner,
+} from '@fortawesome/free-solid-svg-icons';
+
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
-
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import Menu from '~/components/Popper/Menu';
 const cx = classNames.bind(styles);
 
+const menuItems = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 3000);
+        setTimeout(() => {}, 3000);
     });
     return (
         <header className={cx('wrapper')}>
@@ -62,6 +85,11 @@ function Header() {
                     >
                         Login
                     </Button>
+                    <Menu items={menuItems}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+                        </button>
+                    </Menu>
                     <Button rounded style={{ position: 'absolute', right: '20px', bottom: '20px' }}>
                         Get app
                     </Button>
