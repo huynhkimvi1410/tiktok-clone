@@ -30,7 +30,6 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false);
     };
-    console.log(searchResult.length);
     return (
         <HeadlessTippy
             interactive
